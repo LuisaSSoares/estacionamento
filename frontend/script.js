@@ -18,7 +18,7 @@ async function cadastrarCarro(event) {
 
     const results = await response.json()
     if(results.success) {
-        window.location.href = 'login.html'
+        window.location.href = 'index.html'
     } else{
         console.log('houve um erro')
     }
@@ -50,3 +50,27 @@ async function logarCarro(event) {
         alert('Email ou senha incorretos')
     }
 }
+
+//função para trocar a cor da vaga quando selecionada
+document.querySelectorAll('.vaga').forEach(botao => {
+    botao.addEventListener('click', function(event) {
+        event.preventDefault()
+        document.querySelectorAll('.vaga').forEach(b => b.classList.remove('selecionada'))
+        this.classList.add('selecionada')
+        document.getElementById("botaoSelecionarVaga").textContent = 'Selecionar'
+    });
+});
+
+//Função para identificar vaga ocupada
+document.getElementById("botaoSelecionarVaga").addEventListener('click', function(event) {
+    event.preventDefault();
+    const vagaSelecionada = document.querySelector('.vaga.selecionada')
+    const botaoSelecionarVaga = document.getElementById("botaoSelecionarVaga")
+
+    if (vagaSelecionada) {
+        vagaSelecionada.style.backgroundColor = 'gray'
+        vagaSelecionada.setAttribute('data-status', 'ocupado')
+        botaoSelecionarVaga.textContent = "Confirmar chegada"
+
+    }
+});

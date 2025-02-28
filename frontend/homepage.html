@@ -22,12 +22,75 @@
     <form id="cadastroCarros">
         <div class="displayTitulo">
             <h1>Sistema de Estacionamento</h1>
-            <img src="./assets/placa-estacionamento-estacionar.png" alt="">            
+            <img src="./assets/placa-estacionamento-estacionar.png" alt=""> 
         </div>
-            
-            <button class="botao" type="submit" onclick="cadastrarCarro(event)">Continuar
-            </button>
+    <h3>Escolha uma das vagas disponíveis:</h3>
+            <div class="estacionamento">
+                <div class="bloco">
+                    <div>
+                        <button class="vaga preferencial" data-status="disponivel">A1 <img src="./assets/person-wheelchair.svg" alt=""></button>
+                        <button class="vaga preferencial" data-status="disponivel">B1 <img src="./assets/person-wheelchair.svg" alt=""></button>
+                        <button class="vaga preferencial" data-status="disponivel">C1 <img src="./assets/person-wheelchair.svg" alt=""></button>
+                        <button class="vaga preferencial" data-status="disponivel">D1 <img src="./assets/person-wheelchair.svg" alt=""></button>
+                        <button class="vaga preferencial" data-status="disponivel">E1 <img src="./assets/person-wheelchair.svg" alt=""></button>                
+                    </div>
+                    <div>
+                        <button class="vaga" data-status="disponivel">A2</button>
+                        <button class="vaga" data-status="disponivel">B2</button>
+                        <button class="vaga" data-status="disponivel">C2</button>
+                        <button class="vaga" data-status="disponivel">D2</button>
+                        <button class="vaga preferencial" data-status="disponivel">E2<img src="./assets/old-man-walking-svgrepo-com.svg" alt=""></button>                    
+                    </div>
+                    <div>
+                        <button class="vaga" data-status="disponivel">A3</button>
+                        <button class="vaga" data-status="disponivel">B3</button>
+                        <button class="vaga" data-status="disponivel">C3</button>
+                        <button class="vaga" data-status="disponivel">D3</button>
+                        <button class="vaga preferencial" data-status="disponivel">E3 <img src="./assets/old-man-walking-svgrepo-com.svg" alt=""></button>                    
+                    </div>
+                    <div>
+                        <button class="vaga" data-status="disponivel">A4</button>
+                        <button class="vaga" data-status="disponivel">B4</button>
+                        <button class="vaga" data-status="disponivel">C4</button>
+                        <button class="vaga" data-status="disponivel">D4</button>
+                        <button class="vaga preferencial" data-status="disponivel">E4 <img src="./assets/old-man-walking-svgrepo-com.svg" alt=""></button>                    
+                    </div>
+                </div>
+                <div class="bloco">
+                    <div>
+                        <button class="vaga" data-status="disponivel">A5</button>
+                        <button class="vaga" data-status="disponivel">B5</button>
+                        <button class="vaga" data-status="disponivel">C5</button>
+                        <button class="vaga" data-status="disponivel">D5</button>
+                        <button class="vaga preferencial" data-status="disponivel">E5 <img src="./assets/old-man-walking-svgrepo-com.svg" alt=""></button>                    
+                    </div>
+                    <div>
+                        <button class="vaga" data-status="disponivel">A6</button>
+                        <button class="vaga" data-status="disponivel">B6</button>
+                        <button class="vaga" data-status="disponivel">C6</button>
+                        <button class="vaga" data-status="disponivel">D6</button>
+                        <button class="vaga preferencial" data-status="disponivel">E6 <img src="./assets/old-man-walking-svgrepo-com.svg" alt=""></button>                    
+                    </div>
+                    <div>
+                        <button class="vaga" data-status="disponivel">A7</button>
+                        <button class="vaga" data-status="disponivel">B7</button>
+                        <button class="vaga" data-status="disponivel">C7</button>
+                        <button class="vaga" data-status="disponivel">D7</button>
+                        <button class="vaga preferencial" data-status="disponivel">E7<img src="./assets/old-man-walking-svgrepo-com.svg" alt=""></button>                    
+                    </div>
+                    <div>
+                        <button class="vaga preferencial" data-status="disponivel">A8 <img src="./assets/pregnant-woman-1-svgrepo-com.svg" alt=""></button>
+                        <button class="vaga preferencial" data-status="disponivel">B8 <img src="./assets/pregnant-woman-1-svgrepo-com.svg" alt=""></button>
+                        <button class="vaga preferencial" data-status="disponivel">C8 <img src="./assets/pregnant-woman-1-svgrepo-com.svg" alt=""></button>
+                        <button class="vaga preferencial" data-status="disponivel">D8 <img src="./assets/pregnant-woman-1-svgrepo-com.svg" alt=""></button>
+                        <button class="vaga preferencial" data-status="disponivel">E8 <img src="./assets/old-man-walking-svgrepo-com.svg" alt=""></button>                    
+                    </div>
+                </div>
+                
+            </div>           
+            <button id="botaoSelecionarVaga" class="botao" type="submit">Clique em uma vaga</button>
         </div>
+        
     </form>
 <script src="script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
