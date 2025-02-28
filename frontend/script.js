@@ -66,11 +66,32 @@ document.getElementById("botaoSelecionarVaga").addEventListener('click', functio
     event.preventDefault();
     const vagaSelecionada = document.querySelector('.vaga.selecionada')
     const botaoSelecionarVaga = document.getElementById("botaoSelecionarVaga")
+    const carroData = JSON.parse(localStorage.getItem('informacoes'));
+    console.log(carroData)
 
     if (vagaSelecionada) {
         vagaSelecionada.style.backgroundColor = 'gray'
-        vagaSelecionada.setAttribute('data-status', 'ocupado')
         botaoSelecionarVaga.textContent = "Confirmar chegada"
 
-    }
+     if(vagaSelecionada.textContent === "Confirmar chegada") {
+        fetch(`http://localhost:3025/vaga/editar`, {
+            method:"PUT",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                ocupado: true,
+                carro_id: carroData.id
+            }) 
+        })
+        .then(response => response.json())
+        .then(results =>{
+            if(results.success) {
+                botaoSelecionarVaga.textContent = "Vaga Ocupada"
+                botaoSelecionarVaga.disabled = true
+                alert('Vaga Ocupada com sucesso')
+            }
+        })
+    }  
+} 
 });

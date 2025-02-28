@@ -21,17 +21,15 @@
 
 form{
     max-width: 60%;
-    height: 500px; /* Mantendo a altura fixa */
+    height: 500px; 
     margin: 100px auto;
     padding: 25px;
     background-color: #fff;
     border: 1px solid #a1a1a1;
-    box-shadow: 2px 2px 8px;
-    
+    box-shadow: 2px 2px 8px;   
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: relative;
 }
 
 h3{
@@ -111,14 +109,25 @@ h3{
 /* Estacionamento e vagas */
 .estacionamento{
     display: flex;
-    gap: 50px;
+    flex-direction: column;
+    gap: 30px;
     margin-top: 30px;
 }
 
+.estacionamento.botao{
+    margin-top: 20px;
+}
+
+.containerBlocos{
+    display: flex;
+    
+}
+
 .bloco{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(5, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 
 .vaga{

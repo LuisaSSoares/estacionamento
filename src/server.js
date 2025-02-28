@@ -14,10 +14,9 @@ app.post('/carro/cadastrar', (request, response) =>{
         request.body.placa,
         request.body.motorista,
         request.body.senha,
-        null
     )
 
-    let query = 'INSERT INTO carros(placa, motorista, senha, vaga_identificador) VALUES (?, ?, ?, ?)'
+    let query = 'INSERT INTO carros(placa, motorista, senha) VALUES (?, ?, ?)'
 
     connection.query(query, params, (err, results) =>{
         if (results){
@@ -70,6 +69,34 @@ app.post('/carro/login', (request, response) =>{
     })
 })
 
+//define vaga ocupada true
+app.put('/vaga/editar', (request, response) =>{
+    let params = Array(
+        request.body.ocupado,
+        request.body.carro_id
+    )
+    let query = 'UPDATE vagas SET ocupado = ? WHERE carro_id = ?'
+    connection.query(query, params, (err, results) => {
+        if (results.affectedRows > 0){
+            response
+            .status(200)
+            .json({
+                success: true,
+                message: 'Sucesso',
+                data: results
+            })
+        } else{
+            response
+            .status(500)
+            .json({
+                success: false,
+                message: 'Sem sucesso',
+                data: err
+            })
+        }        
+
+    })
+})
 
 //Iniciar servidor
 app.listen(port, () => console.log(`Rodando na porta ${port}`))
