@@ -12,7 +12,7 @@ perfil enum('motorista', 'admin') default 'motorista'
 create table vagas (
 identificador varchar(2) not null primary key,
 ocupado boolean default false,
-vaga_pref boolean default null,
+tipo_vaga enum ('padrão', 'preferencial') default 'padrão',
 tipo_pref varchar(255),
 carro_id int,
 foreign key (carro_id) references carros(id)
@@ -24,51 +24,55 @@ drop table vagas;
 select * from carros;
 select * from vagas;
 
-INSERT INTO vagas (identificador, ocupado, vaga_pref, tipo_pref) VALUES
-('A1', false, true, 'cadeirante'),
-('A2', false, false, null),
-('A3', false, false, null),
-('A4', false, false, null),
-('A5', false, false, null),
-('A6', false, false, null),
-('A7', false, false, null),
-('A8', false, true, 'gestante'),
+SELECT identificador, tipo_vaga, tipo_pref, carro_id 
+FROM vagas 
+WHERE carro_id IS NOT NULL;
 
-('B1', false, true, 'cadeirante'),
-('B2', false, false, null),
-('B3', false, false, null),
-('B4', false, false, null),
-('B5', false, false, null),
-('B6', false, false, null),
-('B7', false, false, null),
-('B8', false, true, 'gestante'),
+INSERT INTO vagas (identificador, ocupado, tipo_vaga, tipo_pref) VALUES
+('A1', false, 'preferencial', 'cadeirante'),
+('A2', false, 'padrão', null),
+('A3', false, 'padrão', null),
+('A4', false, 'padrão', null),
+('A5', false, 'padrão', null),
+('A6', false, 'padrão', null),
+('A7', false, 'padrão', null),
+('A8', false, 'preferencial', 'gestante'),
 
-('C1', false, true, 'cadeirante'),
-('C2', false, false, null),
-('C3', false, false, null),
-('C4', false, false, null),
-('C5', false, false, null),
-('C6', false, false, null),
-('C7', false, false, null),
-('C8', false, true, 'gestante'),
+('B1', false, 'preferencial', 'cadeirante'),
+('B2', false, 'padrão', null),
+('B3', false, 'padrão', null),
+('B4', false, 'padrão', null),
+('B5', false, 'padrão', null),
+('B6', false, 'padrão', null),
+('B7', false, 'padrão', null),
+('B8', false, 'preferencial', 'gestante'),
 
-('D1', false, true, 'cadeirante'),
-('D2', false, false, null),
-('D3', false, true, null),
-('D4', false, true, null),
-('D5', false, true, null),
-('D6', false, false, null),
-('D7', false, false, null),
-('D8', false, true, 'gestante'),
+('C1', false, 'preferencial', 'cadeirante'),
+('C2', false, 'padrão', null),
+('C3', false, 'padrão', null),
+('C4', false, 'padrão', null),
+('C5', false, 'padrão', null),
+('C6', false, 'padrão', null),
+('C7', false, 'padrão', null),
+('C8', false, 'preferencial', 'gestante'),
 
-('E1', false, true, 'cadeirante'),
-('E2', false, true, 'idoso'),
-('E3', false, true, 'idoso'),
-('E4', false, true, 'idoso'),
-('E5', false, true, 'idoso'),
-('E6', false, true, 'idoso'),
-('E7', false, true, 'idoso'),
-('E8', false, true, 'idoso');
+('D1', false, 'preferencial', 'cadeirante'),
+('D2', false, 'padrão', null),
+('D3', false, 'padrão', null),
+('D4', false, 'padrão', null),
+('D5', false, 'padrão', null),
+('D6', false, 'padrão', null),
+('D7', false, 'padrão', null),
+('D8', false, 'preferencial', 'gestante'),
+
+('E1', false, 'preferencial', 'cadeirante'),
+('E2', false, 'preferencial', 'idoso'),
+('E3', false, 'preferencial', 'idoso'),
+('E4', false, 'preferencial', 'idoso'),
+('E5', false, 'preferencial', 'idoso'),
+('E6', false, 'preferencial', 'idoso'),
+('E7', false, 'preferencial', 'idoso'),
+('E8', false, 'preferencial', 'idoso');
 
 update carros set perfil = 'admin' where id='2';
 
