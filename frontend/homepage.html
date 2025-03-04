@@ -16,7 +16,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oregano:ital@0;1&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-    <title>Sistema de Estacionamento - página de cadastro</title>
+    <title>Sistema de Estacionamento - estacionamento virtual</title>
 </head>
 <body>
     <form id="cadastroCarros">
@@ -24,67 +24,67 @@
             <h1>Sistema de Estacionamento</h1>
             <img src="./assets/placa-estacionamento-estacionar.png" alt=""> 
         </div>
-    <h3>Escolha uma das vagas disponíveis:</h3>
+    <h3 id="estacionamentoH3">Escolha uma das vagas disponíveis:</h3>
             <div class="estacionamento">
                 <div class="containerBlocos">
                     <div class="bloco">
                         <div>
-                            <button class="vaga preferencial">A1 <img src="./assets/person-wheelchair.svg" alt=""></button>
-                            <button class="vaga preferencial">B1 <img src="./assets/person-wheelchair.svg" alt=""></button>
-                            <button class="vaga preferencial">C1 <img src="./assets/person-wheelchair.svg" alt=""></button>
-                            <button class="vaga preferencial">D1 <img src="./assets/person-wheelchair.svg" alt=""></button>
-                            <button class="vaga preferencial">E1 <img src="./assets/person-wheelchair.svg" alt=""></button>                
+                            <button class="vaga preferencial" data-identificador="A1">A1 <img src="./assets/person-wheelchair.svg" alt=""></button>
+                            <button class="vaga preferencial" data-identificador="B1">B1 <img src="./assets/person-wheelchair.svg" alt=""></button>
+                            <button class="vaga preferencial" data-identificador="C1">C1 <img src="./assets/person-wheelchair.svg" alt=""></button>
+                            <button class="vaga preferencial" data-identificador="D1">D1 <img src="./assets/person-wheelchair.svg" alt=""></button>
+                            <button class="vaga preferencial" data-identificador="E1">E1 <img src="./assets/person-wheelchair.svg" alt=""></button>                
                         </div>
                         <div>
-                            <button class="vaga">A2</button>
-                            <button class="vaga">B2</button>
-                            <button class="vaga">C2</button>
-                            <button class="vaga">D2</button>
-                            <button class="vaga preferencial">E2<img src="./assets/old-man-walking-svgrepo-com.svg" alt=""></button>                    
+                            <button class="vaga" data-identificador="A2">A2</button>
+                            <button class="vaga" data-identificador="B2">B2</button>
+                            <button class="vaga" data-identificador="C2">C2</button>
+                            <button class="vaga" data-identificador="D2">D2</button>
+                            <button class="vaga preferencial" data-identificador="E2">E2<img src="./assets/old-man-walking-svgrepo-com.svg" alt=""></button>                    
                         </div>
                         <div>
-                            <button class="vaga">A3</button>
-                            <button class="vaga">B3</button>
-                            <button class="vaga">C3</button>
-                            <button class="vaga">D3</button>
-                            <button class="vaga preferencial">E3 <img src="./assets/old-man-walking-svgrepo-com.svg" alt=""></button>                    
+                            <button class="vaga" data-identificador="A3">A3</button>
+                            <button class="vaga" data-identificador="B3">B3</button>
+                            <button class="vaga" data-identificador="C3">C3</button>
+                            <button class="vaga" data-identificador="D3">D3</button>
+                            <button class="vaga preferencial" data-identificador="E3">E3 <img src="./assets/old-man-walking-svgrepo-com.svg" alt=""></button>                    
                         </div>
                         <div>
-                            <button class="vaga">A4</button>
-                            <button class="vaga">B4</button>
-                            <button class="vaga">C4</button>
-                            <button class="vaga">D4</button>
-                            <button class="vaga preferencial">E4 <img src="./assets/old-man-walking-svgrepo-com.svg" alt=""></button>                    
+                            <button class="vaga" data-identificador="A4">A4</button>
+                            <button class="vaga" data-identificador="B4">B4</button>
+                            <button class="vaga" data-identificador="C4">C4</button>
+                            <button class="vaga" data-identificador="D4">D4</button>
+                            <button class="vaga preferencial" data-identificador="E4">E4 <img src="./assets/old-man-walking-svgrepo-com.svg" alt=""></button>                    
                         </div>
                     </div>
                     <div class="bloco">
                         <div>
-                            <button class="vaga">A5</button>
-                            <button class="vaga">B5</button>
-                            <button class="vaga">C5</button>
-                            <button class="vaga">D5</button>
-                            <button class="vaga preferencial">E5 <img src="./assets/old-man-walking-svgrepo-com.svg" alt=""></button>                    
+                            <button class="vaga" data-identificador="A5">A5</button>
+                            <button class="vaga" data-identificador="B5">B5</button>
+                            <button class="vaga" data-identificador="C5">C5</button>
+                            <button class="vaga"data-identificador="D5">D5</button>
+                            <button class="vaga preferencial" data-identificador="E5">E5 <img src="./assets/old-man-walking-svgrepo-com.svg" alt=""></button>                    
                         </div>
                         <div>
-                            <button class="vaga">A6</button>
-                            <button class="vaga">B6</button>
-                            <button class="vaga">C6</button>
-                            <button class="vaga">D6</button>
-                            <button class="vaga preferencial">E6 <img src="./assets/old-man-walking-svgrepo-com.svg" alt=""></button>                    
+                            <button class="vaga" data-identificador="A6">A6</button>
+                            <button class="vaga" data-identificador="B6">B6</button>
+                            <button class="vaga" data-identificador="C6">C6</button>
+                            <button class="vaga" data-identificador="D6">D6</button>
+                            <button class="vaga preferencial" data-identificador="E6">E6 <img src="./assets/old-man-walking-svgrepo-com.svg" alt=""></button>                    
                         </div>
                         <div>
-                            <button class="vaga">A7</button>
-                            <button class="vaga">B7</button>
-                            <button class="vaga">C7</button>
-                            <button class="vaga">D7</button>
-                            <button class="vaga preferencial">E7<img src="./assets/old-man-walking-svgrepo-com.svg" alt=""></button>                    
+                            <button class="vaga" data-identificador="A7">A7</button>
+                            <button class="vaga" data-identificador="B7">B7</button>
+                            <button class="vaga" data-identificador="C7">C7</button>
+                            <button class="vaga" data-identificador="D7">D7</button>
+                            <button class="vaga preferencial" data-identificador="E7">E7<img src="./assets/old-man-walking-svgrepo-com.svg" alt=""></button>                    
                         </div>
                         <div>
-                            <button class="vaga preferencial">A8 <img src="./assets/pregnant-woman-1-svgrepo-com.svg" alt=""></button>
-                            <button class="vaga preferencial">B8 <img src="./assets/pregnant-woman-1-svgrepo-com.svg" alt=""></button>
-                            <button class="vaga preferencial">C8 <img src="./assets/pregnant-woman-1-svgrepo-com.svg" alt=""></button>
-                            <button class="vaga preferencial">D8 <img src="./assets/pregnant-woman-1-svgrepo-com.svg" alt=""></button>
-                            <button class="vaga preferencial">E8 <img src="./assets/old-man-walking-svgrepo-com.svg" alt=""></button>                    
+                            <button class="vaga preferencial" data-identificador="A8">A8 <img src="./assets/pregnant-woman-1-svgrepo-com.svg" alt=""></button>
+                            <button class="vaga preferencial" data-identificador="B8">B8 <img src="./assets/pregnant-woman-1-svgrepo-com.svg" alt=""></button>
+                            <button class="vaga preferencial" data-identificador="C8">C8 <img src="./assets/pregnant-woman-1-svgrepo-com.svg" alt=""></button>
+                            <button class="vaga preferencial" data-identificador="D8">D8 <img src="./assets/pregnant-woman-1-svgrepo-com.svg" alt=""></button>
+                            <button class="vaga preferencial" data-identificador="E8">E8 <img src="./assets/old-man-walking-svgrepo-com.svg" alt=""></button>                    
                         </div>
                     </div>
                 </div>
