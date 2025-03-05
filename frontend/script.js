@@ -125,6 +125,10 @@ async function listarCarros() {
     const results = await response.json() 
     results.data.forEach(element => {
         const row = document.createElement('tr')
+        //refatorando o null do preferencial para 'não'
+        if(element.tipo_pref == null){
+            element.tipo_pref = 'não'
+        }
         row.innerHTML = `
         <td>${element.identificador}</td> 
         <td>${element.tipo_vaga}</td> 
@@ -132,11 +136,35 @@ async function listarCarros() {
         <td>${element.carro_id}</td> 
 
         <td>
-            <button onclick='excluirCarro(${element.carro_id})' class='deletarBtn'>Excluir</button>
+            <button onclick='desocuparVaga(${element.carro_id})' class='deletarBtn'>Desocupar</button>
         </td>
         `
         tabela.appendChild(row)    
     });
+}
+
+//Função para desocupar vaga 
+async function desocuparVaga() {
+    const response = await fetch ('http://localhost/vaga/editar', {
+        method: 'PUT', 
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            ocupado: false,
+            carro_id: carroData.id,
+            identificador: vagaSelecionada.getAttribute('data-identificador')
+        })
+        .then(response => response.json())
+        .then(results =>{
+            if(results.success) {
+                alert('Você saiu dessa vaga')
+                botaoSelecionarVaga.textContent = "Clique em uma vaga"
+
+            }
+        })
+
+    })
 }
 
 //Função para deletar carros nas vagas

@@ -122,11 +122,10 @@ app.get('/carros', (request, response) => {
         }
     })
 })
+
 //Excluir carro
 app.delete('/carro/deletar/:id', (request, response) =>{
-    let params = Array(
-        request.params.id
-    )
+    let params = request.params.id
     let query = 'DELETE FROM carros WHERE id = ?'
     connection.query(query, params, (err, results) =>{
         if(results) {
@@ -148,5 +147,6 @@ app.delete('/carro/deletar/:id', (request, response) =>{
         }
     })
 })
+
 //Iniciar servidor
 app.listen(port, () => console.log(`Rodando na porta ${port}`))
