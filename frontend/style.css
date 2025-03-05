@@ -172,6 +172,15 @@ h3{
     align-self: center;
 }
 
+.links{
+    display: flex;
+    flex-direction: column;
+    font-weight: 300;
+    font-size: 50px;
+    padding: 50px;
+    gap: 15px;
+}
+
 #tabelaCarros table{
     width: 100%;
     border-collapse: collapse;

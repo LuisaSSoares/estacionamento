@@ -99,9 +99,33 @@ app.put('/vaga/editar', (request, response) =>{
     })
 })
 
-//listar vagas e id dos carros
-app.get('/carros', (request, response) => {
+//listar vagas ocupadas
+app.get('/vagas', (request, response) => {
     const query = 'SELECT identificador, tipo_vaga, tipo_pref, carro_id FROM vagas WHERE carro_id IS NOT NULL'
+    connection.query(query, (err, results) =>{
+        if(results) {
+            response
+            .status(200)
+            .json({
+                sucess: true,
+                message: 'Sucesso',
+                data: results
+            }) 
+        } else{
+            response
+            .status(500)
+            .json({
+                sucess: false,
+                message: 'Sem sucesso',
+                data: err
+            }) 
+        }
+    })
+})
+
+//Listar carros
+app.get('/carros', (request, response) => {
+    const query = 'SELECT id, placa, motorista FROM carros'
     connection.query(query, (err, results) =>{
         if(results) {
             response
@@ -145,6 +169,38 @@ app.delete('/carro/deletar/:id', (request, response) =>{
                 data: err
             }) 
         }
+    })
+})
+
+//Editar carro
+app.put('/carro/editar/:id', (request, response) =>{
+    let params = Array(
+        request.body.placa,
+        request.body.motorista,
+        request.params.id
+    )
+
+    let query = 'UPDATE carros SET placa = ?, motorista = ? WHERE id = ?'
+
+    connection.query(query, params, (err, results) =>{
+        if(results) {
+            response
+            .status(200)
+            .json({
+                sucess: true,
+                message: 'Sucesso',
+                data: results
+            }) 
+        } else{
+            response
+            .status(500)
+            .json({
+                sucess: false,
+                message: 'Sem sucesso',
+                data: err
+            }) 
+        }
+
     })
 })
 

@@ -1,6 +1,15 @@
 //Verifica se infos.html foi recuperada para listar os IDs dos carros e suas vagas
 document.addEventListener("DOMContentLoaded", function(){
     if(window.location.pathname.includes('infos.html')) {
+        listarVagasOcupadas()
+    }
+    if(window.location.pathname.includes('homepage.html')){
+        let carroData = JSON.parse(localStorage.getItem('informacoes'))
+        if (carroData && carroData.perfil === 'admin') {
+            const linkInfos = document.getElementById('linkInfos')
+            linkInfos.classList.remove('hidden')
+        }
+    }   if(window.location.pathname.includes('carros.html')) {
         listarCarros()
     }
 }) 
@@ -118,9 +127,9 @@ document.getElementById("botaoSelecionarVaga").addEventListener('click', functio
 } 
 });
 
-//Função para listar carros
-async function listarCarros() {
-    const response = await fetch ('http://localhost:3025/carros')
+//Função para listar vagas ocupadas e IDs dos carros
+async function listarVagasOcupadas() {
+    const response = await fetch ('http://localhost:3025/vagas')
     const tabela = document.getElementById('tabelaCarros')
     const results = await response.json() 
     results.data.forEach(element => {
@@ -136,38 +145,57 @@ async function listarCarros() {
         <td>${element.carro_id}</td> 
 
         <td>
-            <button onclick='desocuparVaga(${element.carro_id})' class='deletarBtn'>Desocupar</button>
+            <button onclick="desocuparVaga('${element.identificador}')" class='deletarBtn'>Desocupar</button>
         </td>
         `
         tabela.appendChild(row)    
     });
 }
 
-//Função para desocupar vaga 
-async function desocuparVaga() {
-    const response = await fetch ('http://localhost/vaga/editar', {
+//Função para desocupar vaga
+async function desocuparVaga(identificador, linha) {
+    const response = await fetch ('http://localhost:3025/vaga/editar', {
         method: 'PUT', 
         headers: {
-            'Content-Type': 'application/json',
-        },
+            "Content-type": "application/json"
+        }, 
         body: JSON.stringify({
             ocupado: false,
-            carro_id: carroData.id,
-            identificador: vagaSelecionada.getAttribute('data-identificador')
+            carro_id: null,
+            identificador: identificador
         })
-        .then(response => response.json())
-        .then(results =>{
-            if(results.success) {
-                alert('Você saiu dessa vaga')
-                botaoSelecionarVaga.textContent = "Clique em uma vaga"
-
-            }
-        })
-
     })
+    
+    const results = await response.json()
+    if(results.success) {
+        linha.remove()
+        
+    }
 }
 
-//Função para deletar carros nas vagas
+//Função para listar os carros cadastrados
+async function listarCarros() {
+    const response = await fetch ('http://localhost:3025/carros')
+    const tabela = document.getElementById('tabelaCarros')
+    const results = await response.json() 
+    results.data.forEach(element => {
+        const row = document.createElement('tr')
+        row.innerHTML = `
+        <td>${element.id}</td> 
+        <td>${element.placa}</td> 
+        <td>${element.motorista}</td> 
+
+        <td>
+            <button onclick="excluirCarro('${element.id}')" class='deletarBtn'>Excluir</button>
+            <button onclick="editarCarro('${element.id}')" class='editarBtn'>Editar</button>
+        </td>
+        `
+        tabela.appendChild(row)    
+    });
+}
+
+
+//Função para excluir carros 
 async function excluirCarro(id) {
     const response = await fetch(`http://localhost:3025/carro/deletar/${id}`, {
         method: 'DELETE'
@@ -175,7 +203,27 @@ async function excluirCarro(id) {
     const results = await response.json()
     if (results.success) {
         alert('Carro removido com sucesso!');
-        document.getElementById('tabelaCarros').innerHTML = ''; 
     }
     listarCarros()
+}
+
+//Função para editar carros
+async function editarCarro(id) {
+    const placa = prompt('Nova placa:')
+    const motorista = prompt('Novo motorista:')
+
+     const response = await fetch(`http://localhost:3025/carro/editar/${id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify({placa, motorista})
+        
+    })
+    const results = await response.json()
+    if (results.sucess) {
+        alert('Carro atualizado com sucesso!');
+        document.getElementById('tabelaCarros').innerHTML = ''; 
+    }
+    listarCarros();
 }
