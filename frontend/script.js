@@ -22,6 +22,11 @@ async function cadastrarCarro(event) {
     const placa = document.getElementById('placa').value
     const senha = document.getElementById('senha').value
 
+    if(!motorista || !placa || !senha) {
+        alert('preencha todos os campos')
+        return
+    }
+
     const data = {placa, motorista, senha}
 
     const response = await fetch('http://localhost:3025/carro/cadastrar', {
